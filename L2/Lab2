@@ -1,0 +1,488 @@
+ITA2@debian:~$ echo $SHELL
+/bin/bash
+4ITA2@debian:~$ ls
+Desktop    Downloads  Pictures  Tejas_240911600  Videos
+Documents  Music      Public    Templates
+4ITA2@debian:~$ cd Tejas_240911600
+4ITA2@debian:~/Tejas_240911600$ ls
+L1  L10  L11  L2  L3  L4  L5  L6  L7  L8  L9
+4ITA2@debian:~/Tejas_240911600$ cd L2
+4ITA2@debian:~/Tejas_240911600/L2$ touch text.txt
+4ITA2@debian:~/Tejas_240911600/L2$ gedit text.txt
+4ITA2@debian:~/Tejas_240911600/L2$ cat > text.txt
+Helloo I am writing something here for the purpose of writing
+this is line 2 
+this is line 3
+this is line 4
+^C
+4ITA2@debian:~/Tejas_240911600/L2$ grep -E line text.txt
+this is line 2
+this is line 3
+this is line 4
+4ITA2@debian:~/Tejas_240911600/L2$ sort text.txt
+Helloo I am writing something here for the purpose of writing
+this is line 2
+this is line 3
+this is line 4
+4ITA2@debian:~/Tejas_240911600/L2$ cat >> text.txt
+I hope i am not overwritting
+ehehehe
+ohoohoh
+^C
+4ITA2@debian:~/Tejas_240911600/L2$ cat text.txt
+Helloo I am writing something here for the purpose of writing
+this is line 2
+this is line 3
+this is line 4
+I hope i am not overwritting
+ehehehe
+ohoohoh
+4ITA2@debian:~/Tejas_240911600/L2$ sort text.txt
+ehehehe
+Helloo I am writing something here for the purpose of writing
+I hope i am not overwritting
+ohoohoh
+this is line 2
+this is line 3
+this is line 4
+4ITA2@debian:~/Tejas_240911600/L2$ cat text.txt
+Helloo I am writing something here for the purpose of writing
+this is line 2
+this is line 3
+this is line 4
+I hope i am not overwritting
+ehehehe
+ohoohoh
+4ITA2@debian:~/Tejas_240911600/L2$ wc text.txt
+  7  31 152 text.txt
+4ITA2@debian:~/Tejas_240911600/L2$ echo "first is lines followed by words followed by byte size"
+first is lines followed by words followed by byte size
+4ITA2@debian:~/Tejas_240911600/L2$ ls -l | cut -d "-" -f 2
+total 4
+rw
+4ITA2@debian:~/Tejas_240911600/L2$ ls -la | cut -d "-" -f 2
+total 12
+xr
+xr
+rw
+4ITA2@debian:~/Tejas_240911600/L2$ ls -la | cut -d "-"
+cut: you must specify a list of bytes, characters, or fields
+Try 'cut --help' for more information.
+4ITA2@debian:~/Tejas_240911600/L2$ ls -la | cut -d "-" -f 2
+total 12
+xr
+xr
+rw
+4ITA2@debian:~/Tejas_240911600/L2$ ls -la | cut -d "-" -f 4
+total 12
+
+
+
+4ITA2@debian:~/Tejas_240911600/L2$ ls -la | cut -d "-" -f 1
+total 12
+drwxr
+drwxr
+
+4ITA2@debian:~/Tejas_240911600/L2$ ls -la | cut -d "-" -f 0
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+4ITA2@debian:~/Tejas_240911600/L2$ sed "s/this/that" text.txt
+sed: -e expression #1, char 11: unterminated `s' command
+4ITA2@debian:~/Tejas_240911600/L2$ sed 's/this/that' text.txt
+sed: -e expression #1, char 11: unterminated `s' command
+4ITA2@debian:~/Tejas_240911600/L2$ sed 's/this/that/g' text.txt
+Helloo I am writing something here for the purpose of writing
+that is line 2
+that is line 3
+that is line 4
+I hope i am not overwritting
+ehehehe
+ohoohoh
+4ITA2@debian:~/Tejas_240911600/L2$ sed -i 's/this/that/g' text.txt
+4ITA2@debian:~/Tejas_240911600/L2$ cat text.txt
+Helloo I am writing something here for the purpose of writing
+that is line 2
+that is line 3
+that is line 4
+I hope i am not overwritting
+ehehehe
+ohoohoh
+4ITA2@debian:~/Tejas_240911600/L2$ sed -i 's/that/this/g' text.txt
+4ITA2@debian:~/Tejas_240911600/L2$ cat text.txt
+Helloo I am writing something here for the purpose of writing
+this is line 2
+this is line 3
+this is line 4
+I hope i am not overwritting
+ehehehe
+ohoohoh
+4ITA2@debian:~/Tejas_240911600/L2$ echo "this concludes the first question"
+this concludes the first question
+4ITA2@debian:~/Tejas_240911600/L2$ echo "Second question begins here"
+Second question begins here
+4ITA2@debian:~/Tejas_240911600/L2$ cat >> text.txt
+hi 
+o2
+^C
+4ITA2@debian:~/Tejas_240911600/L2$ cat text.txt
+Helloo I am writing something here for the purpose of writing
+this is line 2
+this is line 3
+this is line 4
+I hope i am not overwritting
+ehehehe
+ohoohoh
+hi 
+o2
+4ITA2@debian:~/Tejas_240911600/L2$ grep -E '__' text.txt
+4ITA2@debian:~/Tejas_240911600/L2$ grep -E '??' text.txt
+grep: warning: ? at start of expression
+grep: warning: ? at start of expression
+Helloo I am writing something here for the purpose of writing
+this is line 2
+this is line 3
+this is line 4
+I hope i am not overwritting
+ehehehe
+ohoohoh
+hi 
+o2
+4ITA2@debian:~/Tejas_240911600/L2$ grep -E '^??' text.txt
+grep: warning: ? at start of expression
+grep: warning: ? at start of expression
+Helloo I am writing something here for the purpose of writing
+this is line 2
+this is line 3
+this is line 4
+I hope i am not overwritting
+ehehehe
+ohoohoh
+hi 
+o2
+4ITA2@debian:~/Tejas_240911600/L2$ grep -E '??' text.txt
+grep: warning: ? at start of expression
+grep: warning: ? at start of expression
+Helloo I am writing something here for the purpose of writing
+this is line 2
+this is line 3
+this is line 4
+I hope i am not overwritting
+ehehehe
+ohoohoh
+hi 
+o2
+4ITA2@debian:~/Tejas_240911600/L2$ grep -E 2  text.txt
+this is line 2
+o2
+4ITA2@debian:~/Tejas_240911600/L2$ grep "^??" text.txt
+4ITA2@debian:~/Tejas_240911600/L2$ grep "^hi" text.txt
+hi 
+4ITA2@debian:~/Tejas_240911600/L2$ grep "^??" text.txt
+4ITA2@debian:~/Tejas_240911600/L2$ grep "^??$" text.txt
+4ITA2@debian:~/Tejas_240911600/L2$ grep '^..$' text.txt
+o2
+4ITA2@debian:~/Tejas_240911600/L2$ grep '^[A-Z]' text.txt
+Helloo I am writing something here for the purpose of writing
+I hope i am not overwritting
+4ITA2@debian:~/Tejas_240911600/L2$ cat >> text.txt
+I needed to add something with period.
+and i did.
+^C
+4ITA2@debian:~/Tejas_240911600/L2$ cat text.txt
+Helloo I am writing something here for the purpose of writing
+this is line 2
+this is line 3
+this is line 4
+I hope i am not overwritting
+ehehehe
+ohoohoh
+hi 
+o2
+I needed to add something with period.
+and i did.
+4ITA2@debian:~/Tejas_240911600/L2$ grep -E '\.' text.txt
+I needed to add something with period.
+and i did.
+4ITA2@debian:~/Tejas_240911600/L2$ grep ' .* ' text.txt
+Helloo I am writing something here for the purpose of writing
+this is line 2
+this is line 3
+this is line 4
+I hope i am not overwritting
+I needed to add something with period.
+and i did.
+4ITA2@debian:~/Tejas_240911600/L2$ grep '[0-9]' text.txt 
+this is line 2
+this is line 3
+this is line 4
+o2
+4ITA2@debian:~/Tejas_240911600/L2$ grep '[0-9]' text.txt > newtext.txt
+4ITA2@debian:~/Tejas_240911600/L2$ cat newtext.txt
+this is line 2
+this is line 3
+this is line 4
+o2
+4ITA2@debian:~/Tejas_240911600/L2$ echo date
+date
+4ITA2@debian:~/Tejas_240911600/L2$ date
+Thursday 15 January 2026 03:15:15 PM IST
+4ITA2@debian:~/Tejas_240911600/L2$ echo "Question 2 ends here" 
+Question 2 ends here
+4ITA2@debian:~/Tejas_240911600/L2$ 
+4ITA2@debian:~/Tejas_240911600/L2$ 
+4ITA2@debian:~/Tejas_240911600/L2$ 
+4ITA2@debian:~/Tejas_240911600/L2$ echo "Question 3 begins here"
+Question 3 begins here
+4ITA2@debian:~/Tejas_240911600/L2$ vi newfile.txt
+
+[1]+  Stopped                 vi newfile.txt
+4ITA2@debian:~/Tejas_240911600/L2$ vi newfile.txt
+
+[2]+  Stopped                 vi newfile.txt
+4ITA2@debian:~/Tejas_240911600/L2$ vi newfile.txt
+4ITA2@debian:~/Tejas_240911600/L2$ vi newfile.txt
+4ITA2@debian:~/Tejas_240911600/L2$ cat newfile.txt
+RegistrationNo:Name:Department:Branch:Section:Sub1:Sub2:Sub3.
+1230:Tejas1:ICT:IT:A:80:70:90.
+1231:Tejas2:ICT:CCE:A:80:70:90.
+1232:Tejas3:ICT:IT:A:80:70:90.
+1233:Tejas4:ICT:CCE:A:80:70:90.
+1234:Tejas5:ICT:IT:A:80:70:90.
+1235:Tejas6:ICT:IT:A:80:70:90.
+1236:Tejas7:ICT:CSE:A:80:70:90.
+1237:Tejas8:ICT:IT:A:80:70:90.
+1238:Tejas9:ICT:DSC:A:80:70:90.
+1239:Tejas10:ICT:IT:A:80:70:90.
+.
+4ITA2@debian:~/Tejas_240911600/L2$ vi newfile.txt
+4ITA2@debian:~/Tejas_240911600/L2$ cat newfile.txt
+RegistrationNo:Name:Department:Branch:Section:Sub1:Sub2:Sub3.
+1230:Tejas1:ICT:IT:A:80:70:90.
+1231:Tejas2:ICT:CCE:A:80:70:90.
+1232:Tejas3:ICT:IT:A:80:70:90.
+1233:Tejas4:ICT:CCE:A:80:70:90.
+1234:Tejas5:ICT:IT:A:80:70:90.
+1235:Tejas6:ICT:IT:A:80:70:90.
+1236:Tejas7:ICT:CSE:A:80:70:90.
+1237:Tejas8:ICT:IT:A:80:70:90.
+1238:Tejas9:ICT:DSC:A:80:70:90.
+1239:Tejas10:ICT:IT:A:80:70:90.
+
+4ITA2@debian:~/Tejas_240911600/L2$ grep -E 'IT' newfile.txt
+1230:Tejas1:ICT:IT:A:80:70:90.
+1232:Tejas3:ICT:IT:A:80:70:90.
+1234:Tejas5:ICT:IT:A:80:70:90.
+1235:Tejas6:ICT:IT:A:80:70:90.
+1237:Tejas8:ICT:IT:A:80:70:90.
+1239:Tejas10:ICT:IT:A:80:70:90.
+4ITA2@debian:~/Tejas_240911600/L2$ sed -i 's/IT/Information Technology' newfile.txt
+sed: -e expression #1, char 27: unterminated `s' command
+4ITA2@debian:~/Tejas_240911600/L2$ sed -i 's/IT/Information Technology/g' newfile.txt
+4ITA2@debian:~/Tejas_240911600/L2$ cat newfile.txt
+RegistrationNo:Name:Department:Branch:Section:Sub1:Sub2:Sub3.
+1230:Tejas1:ICT:Information Technology:A:80:70:90.
+1231:Tejas2:ICT:CCE:A:80:70:90.
+1232:Tejas3:ICT:Information Technology:A:80:70:90.
+1233:Tejas4:ICT:CCE:A:80:70:90.
+1234:Tejas5:ICT:Information Technology:A:80:70:90.
+1235:Tejas6:ICT:Information Technology:A:80:70:90.
+1236:Tejas7:ICT:CSE:A:80:70:90.
+1237:Tejas8:ICT:Information Technology:A:80:70:90.
+1238:Tejas9:ICT:DSC:A:80:70:90.
+1239:Tejas10:ICT:Information Technology:A:80:70:90.
+
+4ITA2@debian:~/Tejas_240911600/L2$ vi newfile.txt
+4ITA2@debian:~/Tejas_240911600/L2$ cat newfile.txt
+RegistrationNo:Name:Department:Branch:Section:Sub1:Sub2:Sub3.
+1230:Tejas1:ICT:Information Technology:A:88:70:90.
+1231:Tejas2:ICT:CCE:A:80:50:90.
+1232:Tejas3:ICT:Information Technology:A:30:70:90.
+1233:Tejas4:ICT:CCE:A:80:70:70.
+1234:Tejas5:ICT:Information Technology:A:60:70:90.
+1235:Tejas6:ICT:Information Technology:A:50:70:90.
+1236:Tejas7:ICT:CSE:A:80:70:60.
+1237:Tejas8:ICT:Information Technology:A:50:70:32.
+1238:Tejas9:ICT:DSC:A:30:80:40.
+1239:Tejas10:ICT:Information Technology:A:81:10:30.
+
+4ITA2@debian:~/Tejas_240911600/L2$ grep '1234' newfile.txt
+1234:Tejas5:ICT:Information Technology:A:60:70:90.
+4ITA2@debian:~/Tejas_240911600/L2$ sed -d ":" -f 5,6,7
+sed: invalid option -- 'd'
+Usage: sed [OPTION]... {script-only-if-no-other-script} [input-file]...
+
+  -n, --quiet, --silent
+                 suppress automatic printing of pattern space
+      --debug
+                 annotate program execution
+  -e script, --expression=script
+                 add the script to the commands to be executed
+  -f script-file, --file=script-file
+                 add the contents of script-file to the commands to be executed
+  --follow-symlinks
+                 follow symlinks when processing in place
+  -i[SUFFIX], --in-place[=SUFFIX]
+                 edit files in place (makes backup if SUFFIX supplied)
+  -l N, --line-length=N
+                 specify the desired line-wrap length for the `l' command
+  --posix
+                 disable all GNU extensions.
+  -E, -r, --regexp-extended
+                 use extended regular expressions in the script
+                 (for portability use POSIX -E).
+  -s, --separate
+                 consider files as separate rather than as a single,
+                 continuous long stream.
+      --sandbox
+                 operate in sandbox mode (disable e/r/w commands).
+  -u, --unbuffered
+                 load minimal amounts of data from the input files and flush
+                 the output buffers more often
+  -z, --null-data
+                 separate lines by NUL characters
+      --help     display this help and exit
+      --version  output version information and exit
+
+If no -e, --expression, -f, or --file option is given, then the first
+non-option argument is taken as the sed script to interpret.  All
+remaining arguments are names of input files; if no input files are
+specified, then the standard input is read.
+
+GNU sed home page: <https://www.gnu.org/software/sed/>.
+General help using GNU software: <https://www.gnu.org/gethelp/>.
+4ITA2@debian:~/Tejas_240911600/L2$ git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint:   git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint:   git branch -m <name>
+Initialized empty Git repository in /home/4ITA2/Tejas_240911600/L2/.git/
+4ITA2@debian:~/Tejas_240911600/L2$ cut -d ":" -f 5,6,7
+^C
+4ITA2@debian:~/Tejas_240911600/L2$ cut -d ":" -f 5,6,7 newfile.txt
+Section:Sub1:Sub2
+A:88:70
+A:80:50
+A:30:70
+A:80:70
+A:60:70
+A:50:70
+A:80:70
+A:50:70
+A:30:80
+A:81:10
+
+4ITA2@debian:~/Tejas_240911600/L2$ cut -d ":" -f 6,7,8 newfile.txt
+Sub1:Sub2:Sub3.
+88:70:90.
+80:50:90.
+30:70:90.
+80:70:70.
+60:70:90.
+50:70:90.
+80:70:60.
+50:70:32.
+30:80:40.
+81:10:30.
+
+4ITA2@debian:~/Tejas_240911600/L2$ vi newfile.txt
+4ITA2@debian:~/Tejas_240911600/L2$ vi newfile.txt
+4ITA2@debian:~/Tejas_240911600/L2$ cut -d ":" -f 6,7,8 newfile.txt
+Sub1:Sub2:Sub3.
+88:70:90
+80:50:90
+30:70:90
+80:70:70
+60:70:90
+50:70:90
+80:70:60
+50:70:32
+30:80:40
+81:10:30
+
+4ITA2@debian:~/Tejas_240911600/L2$ grep '1234' newfile | cut -d ":" -f 5,6,7 
+grep: newfile: No such file or directory
+4ITA2@debian:~/Tejas_240911600/L2$ grep '1234' newfile.txt | cut -d ":" -f 5,6,7 newfile.txt
+Section:Sub1:Sub2
+A:88:70
+A:80:50
+A:30:70
+A:80:70
+A:60:70
+A:50:70
+A:80:70
+A:50:70
+A:30:80
+A:81:10
+
+4ITA2@debian:~/Tejas_240911600/L2$ grep '1234' newfile.txt | cut -d ":" -f 6,7,8 newfile.txt
+Sub1:Sub2:Sub3.
+88:70:90
+80:50:90
+30:70:90
+80:70:70
+60:70:90
+50:70:90
+80:70:60
+50:70:32
+30:80:40
+81:10:30
+
+4ITA2@debian:~/Tejas_240911600/L2$ grep '1234' newfile.txt
+1234:Tejas5:ICT:Information Technology:A:60:70:90
+4ITA2@debian:~/Tejas_240911600/L2$ grep '1234' newfile.txt | cut -d ":" -f 6,7,8 newfile.txt
+Sub1:Sub2:Sub3.
+88:70:90
+80:50:90
+30:70:90
+80:70:70
+60:70:90
+50:70:90
+80:70:60
+50:70:32
+30:80:40
+81:10:30
+
+4ITA2@debian:~/Tejas_240911600/L2$ grep '1234' newfile.txt | cut -d ":" -f 6,7,8 newfile.txt
+Sub1:Sub2:Sub3.
+88:70:90
+80:50:90
+30:70:90
+80:70:70
+60:70:90
+50:70:90
+80:70:60
+50:70:32
+30:80:40
+81:10:30
+
+4ITA2@debian:~/Tejas_240911600/L2$  cut -d ":" -f 6,7,8 newfile.txt | grep '1234' newfile.txt
+1234:Tejas5:ICT:Information Technology:A:60:70:90
+4ITA2@debian:~/Tejas_240911600/L2$ grep '1234' newfile.txt | cut -d ":" -f 6,7,8
+60:70:90
+4ITA2@debian:~/Tejas_240911600/L2$ echo "(grep "^1234:" newfile.txt | cut -d ":" -f 6,7,8 | sed 's\:\+\g')" 
+(grep ^1234: newfile.txt | cut -d : -f 6,7,8 | sed 's\:\+\g')
+4ITA2@debian:~/Tejas_240911600/L2$ echo "(grep "^1234:" newfile.txt | cut -d ":" -f 6,7,8 | sed 's\:\+\g')"/3 
+(grep ^1234: newfile.txt | cut -d : -f 6,7,8 | sed 's\:\+\g')/3
+4ITA2@debian:~/Tejas_240911600/L2$ echo "(grep "^1234:" newfile.txt | cut -d ":" -f 6,7,8 | sed 's\:\+\g')"/3 | bc -l 
+(standard_in) 1: illegal character: :
+(standard_in) 1: syntax error
+(standard_in) 1: illegal character: |
+(standard_in) 1: illegal character: :
+(standard_in) 1: syntax error
+(standard_in) 1: illegal character: |
+(standard_in) 1: illegal character: '
+(standard_in) 1: illegal character: \
+(standard_in) 1: illegal character: :
+(standard_in) 1: illegal character: \
+(standard_in) 1: illegal character: \
+(standard_in) 1: illegal character: '
+(standard_in) 1: syntax error
+4ITA2@debian:~/Tejas_240911600/L2$ echo "($(grep '^1234' newfile.txt | cut -d ":" -f 6,7,8 | sed 's/:/+/g')) / 3" | bc -l
+73.33333333333333333333
+4ITA2@debian:~/Tejas_240911600/L2$ 

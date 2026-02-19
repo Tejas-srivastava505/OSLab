@@ -1,0 +1,14 @@
+I understood how to use cd command. 
+It is used to change directory.
+
+2. man command
+It is used to open the manual of the command given as the argument
+
+3.ls 
+It is used to list all the files present in the current directory.
+
+4.mkdir 
+It is used to make a new directory.
+
+5.rmdir 
+It is used to delete the file given as the argument provided it doesnt contain any subfiles or subfolders.
