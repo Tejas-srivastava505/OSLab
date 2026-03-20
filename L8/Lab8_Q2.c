@@ -1,87 +1,87 @@
 #include <stdio.h>
-#include <stdbool.h>
 
-#define P 5   // Number of processes
-#define R 3   // Number of resource types
+#define P 5
+#define R 3
 
-int main() {
-    // Allocation Matrix
-    int allocation[P][R] = {
-        {0,1,0},   // P0
-        {2,0,0},   // P1
-        {3,0,3},   // P2
-        {2,1,1},   // P3
-        {0,0,2}    // P4
-    };
+void detectDeadlock(int alloc[P][R], int request[P][R], int avail[R]) {
+    int work[R], finish[P];
 
-    // Request Matrix
-    int request[P][R] = {
-        {0,0,0},   // P0
-        {2,0,2},   // P1
-        {0,0,0},   // P2
-        {1,0,0},   // P3
-        {0,0,2}    // P4
-    };
+    for(int i=0;i<R;i++)
+        work[i] = avail[i];
 
-    // Available Resources
-    int available[R] = {0,0,0};
+    for(int i=0;i<P;i++)
+        finish[i] = 0;
 
-    bool finish[P] = {false};
-    int work[R];
-
-    // Step 1: Initialize work = available
-    for (int i = 0; i < R; i++)
-        work[i] = available[i];
-
-    // Step 2: Mark processes with zero allocation as finished
-    for (int i = 0; i < P; i++) {
-        bool zero = true;
-        for (int j = 0; j < R; j++) {
-            if (allocation[i][j] != 0) {
-                zero = false;
-                break;
-            }
-        }
-        if (zero)
-            finish[i] = true;
-    }
-
-    // Step 3: Find processes that can finish
-    bool found;
+    int found;
     do {
-        found = false;
-        for (int i = 0; i < P; i++) {
-            if (!finish[i]) {
+        found = 0;
+
+        for(int i=0;i<P;i++) {
+            if(!finish[i]) {
                 int j;
-                for (j = 0; j < R; j++) {
-                    if (request[i][j] > work[j])
+                for(j=0;j<R;j++) {
+                    if(request[i][j] > work[j])
                         break;
                 }
 
-                if (j == R) {
-                    // Process can finish
-                    for (int k = 0; k < R; k++)
-                        work[k] += allocation[i][k];
+                if(j == R) {
+                    for(int k=0;k<R;k++)
+                        work[k] += alloc[i][k];
 
-                    finish[i] = true;
-                    found = true;
+                    finish[i] = 1;
+                    found = 1;
                 }
             }
         }
-    } while (found);
 
-    // Step 4: Check for deadlock
-    printf("Deadlocked processes:\n");
-    bool deadlock = false;
-    for (int i = 0; i < P; i++) {
-        if (!finish[i]) {
-            printf("P%d ", i);
-            deadlock = true;
+    } while(found);
+
+    int deadlock = 0;
+    printf("\nDeadlock Detection Result:\n");
+
+    for(int i=0;i<P;i++) {
+        if(!finish[i]) {
+            printf("Process P%d is in deadlock\n", i);
+            deadlock = 1;
         }
     }
 
-    if (!deadlock)
-        printf("No deadlock detected.\n");
+    if(!deadlock)
+        printf("Deadlock is not detected\n");
+}
+
+void addRequest(int request[P][R], int process, int extra[R]) {
+    for(int j=0;j<R;j++)
+        request[process][j] += extra[j];
+}
+
+int main() {
+
+    int alloc[P][R] = {
+        {0,1,0},
+        {2,0,0},
+        {3,0,3},
+        {2,1,1},
+        {0,0,2}
+    };
+
+    int request[P][R] = {
+        {0,0,0},
+        {2,0,2},
+        {0,0,0},
+        {1,0,0},
+        {0,0,2}
+    };
+
+    int avail[R] = {0,0,0};
+
+    detectDeadlock(alloc, request, avail);
+
+    int extra[R] = {0,0,1};
+    printf("\nAdding extra request (0,0,1) to P2...\n");
+    addRequest(request, 2, extra);
+
+    detectDeadlock(alloc, request, avail);
 
     return 0;
 }
