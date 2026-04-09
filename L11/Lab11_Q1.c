@@ -158,14 +158,14 @@ int main() {
     printf("Enter number of requests: ");
     scanf("%d", &n);
     
-    printf("Enter the sequence (space separated): ");
+    printf("Enter the sequence: ");
     for (int i = 0; i < n; i++) {
         scanf("%d", &req[i]);
     }
     
     printf("Initial head position: ");
     scanf("%d", &head);
-    printf("Total disk size (e.g., 200): ");
+    printf("Total disk size: ");
     scanf("%d", &disk_size);
     printf("Direction (0 for Left, 1 for Right): ");
     scanf("%d", &direction);
